@@ -16,8 +16,8 @@ using namespace std;
 
 typedef unsigned int uint;
 
-const float MIN_WEIGHT_INIT = -0.3;
-const float MAX_WEIGHT_INIT = +0.3;
+const float DFL_MIN_WEIGHT_INIT = -0.3;
+const float DFL_MAX_WEIGHT_INIT = +0.3;
 
 #define hiddenat(layer, neuron) hidden[(layer)*n_hidden_neurons + (neuron)]
 #define inputweightat(neuron_from, neuron_to) weights[(neuron_from)*n_hidden_neurons + (neuron_to)]
@@ -84,13 +84,14 @@ public:
         load(path);
     }
 
-    Neural_Network(uint n_inputs, uint n_hidden_layers, uint n_hidden_neurons, uint n_outputs, double learning_rate)
+    Neural_Network(uint n_inputs, uint n_hidden_layers, uint n_hidden_neurons, uint n_outputs, double learning_rate,
+                   min_weight_init = DFL_MIN_WEIGHT_INIT, max_weight_init = DFL_MAX_WEIGHT_INIT)
             : n_inputs(n_inputs), n_hidden_layers(n_hidden_layers),
               n_hidden_neurons(n_hidden_neurons), n_outputs(n_outputs), learning_rate(learning_rate) {
 
         reserve();
 
-        uniform_real_distribution<> distribution(MIN_WEIGHT_INIT, MAX_WEIGHT_INIT);
+        uniform_real_distribution<> distribution(min_weight_init, max_weight_init);
         mt19937_64 generator(time(0));
 
         for (uint i = 0; i < n_weights; ++i)
