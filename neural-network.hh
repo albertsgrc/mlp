@@ -85,7 +85,7 @@ public:
     }
 
     Neural_Network(uint n_inputs, uint n_hidden_layers, uint n_hidden_neurons, uint n_outputs, double learning_rate,
-                   min_weight_init = DFL_MIN_WEIGHT_INIT, max_weight_init = DFL_MAX_WEIGHT_INIT)
+                   double min_weight_init = DFL_MIN_WEIGHT_INIT, double max_weight_init = DFL_MAX_WEIGHT_INIT)
             : n_inputs(n_inputs), n_hidden_layers(n_hidden_layers),
               n_hidden_neurons(n_hidden_neurons), n_outputs(n_outputs), learning_rate(learning_rate) {
 

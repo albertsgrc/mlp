@@ -34,11 +34,13 @@ int main() {
         for (int j = 0; j < n_outputs; ++j) cin >> expected_output[i][j];
     }
 
+    cout << "Training..." << endl;
+
     for (int i = 0; i < n_epochs; ++i) {
         double mse = 0;
         for (int j = 0; j < n_samples; ++j)
             mse += nn.train(&samples[j][0], &expected_output[j][0]);
-        cout << "\r" << mse/n_samples;
+        cout << "\rMSE: " << mse/n_samples;
         cout.flush();
     }
 
