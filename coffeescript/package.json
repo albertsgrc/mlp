@@ -1,0 +1,19 @@
+{
+  "name": "neural-network",
+  "version": "0.0.0",
+  "description": "Multilayer Feedforward Neural Network implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Neural",
+    "Network",
+    "Learning",
+    "Multilayer",
+    "Feedforward",
+    "Backpropagation"
+  ],
+  "author": "Albert Segarra Roca",
+  "license": "MIT"
+}
