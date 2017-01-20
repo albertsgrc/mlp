@@ -1,5 +1,3 @@
-assert = require 'assert'
-
 weightInit = -> Math.random()*0.6 - 0.3;
 
 sigmoid = (x) -> 1/(1 + Math.exp(-x))
