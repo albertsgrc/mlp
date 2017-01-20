@@ -15,8 +15,7 @@ class Layer
 
     setNextLayer: (@nextLayer) ->
         @outputBiases = [0...@nextLayer.nNeurons].map(weightInit)
-        @outputWeights = [0...@nextLayer.nNeurons]
-                            .map(=>[0...@nNeurons].map(weightInit))
+        @outputWeights = [0...@nextLayer.nNeurons].map(=>[0...@nNeurons].map(weightInit))
 
     feedForward: ->
         if @nextLayer?
@@ -46,21 +45,16 @@ class Layer
 
 module.exports = class NeuralNetwork
     constructor: (@nInputs, @nOutputs, @nHiddenLayers, @nHiddenNeurons, @learningRate) ->
-        assert [@nInputs, @nHiddenNeurons, @nHiddenLayers, @nOutputs].every((x) -> x > 0)
+        @layers = [@inputLayer = new Layer(@nInputs)]
 
-        @layers = []
-        @layers.push(new Layer(@nInputs))
         for i in [1..@nHiddenLayers]
             @layers.push(new Layer(@nHiddenNeurons, @layers[i-1], sigmoid, dersigmoid))
-        @layers.push(new Layer(@nOutputs, @layers[-1..-1][0]))
-        @outputLayer = @layers[-1..-1][0]
+
+        @layers.push(@outputLayer = new Layer(@nOutputs, @layers[-1..-1][0]))
 
     recall: (input) ->
-        for i in [0...@nInputs]
-            @layers[0].neurons[i] = input[i]
-
-        @layers[0].feedForward()
-
+        @inputLayer.neurons[i] = input[i] for i in [0...@nInputs]
+        @inputLayer.feedForward()
         @outputLayer.neurons
 
     train: (input, expected) ->
