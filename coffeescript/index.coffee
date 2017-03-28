@@ -5,8 +5,7 @@ dersigmoid = (x) -> x*(1.0 - x)
 
 class Layer
     constructor: (@nNeurons, @previousLayer, @activation=((x)->x), @activationDer=((x)->x)) ->
-        @neurons = [0...@nNeurons]
-        @delta = [0...@nNeurons]
+        @neurons = @delta = [0...@nNeurons]
 
         if @previousLayer?
             @previousLayer.setNextLayer(this)
