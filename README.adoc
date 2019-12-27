@@ -98,7 +98,7 @@ void set_learning_rate(double v);
 void pretty_print(std::ostream& o);
 ```
 
-It does also implement the `<<` and `>>` operators for streams to dump and import neural networks 🔥
+It does also implement the `<<` and `>>` operators for streams to dump and import trained neural networks 🔥
 
 === TODOs
 
