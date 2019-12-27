@@ -1,0 +1,4 @@
+*.dSYM
+cli
+test
+nn.txt

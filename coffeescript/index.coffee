@@ -5,7 +5,8 @@ dersigmoid = (x) -> x*(1.0 - x)
 
 class Layer
     constructor: (@nNeurons, @previousLayer, @activation=((x)->x), @activationDer=((x)->x)) ->
-        @neurons = @delta = [0...@nNeurons]
+        @neurons = [0...@nNeurons]
+        @delta = [0...@nNeurons]
 
         if @previousLayer?
             @previousLayer.setNextLayer(this)
@@ -40,7 +41,7 @@ class Layer
                 for neuronFrom, j in @previousLayer.neurons
                     @previousLayer.outputWeights[i][j] += lr*@delta[i]*neuronFrom
 
-module.exports = class NeuralNetwork
+module.exports = class MLP
     constructor: (@nInputs, @nOutputs, @nHiddenLayers, @nHiddenNeurons, @learningRate) ->
         @layers = [@inputLayer = new Layer(@nInputs)]
 

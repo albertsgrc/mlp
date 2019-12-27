@@ -1,0 +1,132 @@
+= mlp
+
+A multilayer perceptron implementation in C++ and Coffeescript
+
+== C++
+
+=== Build
+
+Run `cd c++` and use `make` to compile the test and cli programs.
+
+=== Test with the XOR function
+
+Run `./test`, it will output the predictions for the XOR truth table:
+
+```
+2.1271e-15
+1
+1
+3.44844e-15
+```
+
+=== CLI
+
+Run `./cli`
+
+Example:
+
+```
+# of inputs> 2
+
+# of hidden neurons> 2
+
+# of hidden layers> 1
+
+# of outputs> 1
+
+# of samples> 4
+
+# of epochs> 10000
+
+Learning rate> 0.1
+
+Training sample #1:
+Input 2 numbers for the input features, space-separated:
+0 0
+Input 1 numbers for the expected output, space-separated:
+0
+
+
+Training sample #2:
+Input 2 numbers for the input features, space-separated:
+0 1
+Input 1 numbers for the expected output, space-separated:
+1
+
+
+Training sample #3:
+Input 2 numbers for the input features, space-separated:
+1 0
+Input 1 numbers for the expected output, space-separated:
+1
+
+
+Training sample #4:
+Input 2 numbers for the input features, space-separated:
+1 1
+Input 1 numbers for the expected output, space-separated:
+0
+
+
+Training...
+MSE: 1.36784e-29
+Enter the testing samples: 2-dimensional vectors separated by spaces.
+0 0
+2.71603e-15
+0 1
+1
+1 0
+1
+1 1
+3.22927e-15
+```
+
+=== API
+
+You can also use `c++/mlp.hh` as a library. It has no dependencies!
+
+```c++
+MLP(uint n_inputs, uint n_hidden_layers, uint n_hidden_neurons, uint n_outputs, double learning_rate,
+    double min_weight_init, double max_weight_init); // Last two arguments are optional
+
+double MLP::train(double* input_values, double* expected); // Returns Mean Squared Error
+
+double* MLP::recall(double* input_values);
+
+void set_learning_rate(double v);
+
+void pretty_print(std::ostream& o);
+```
+
+It does also implement the `<<` and `>>` operators for streams to dump and import neural networks 🔥
+
+=== TODOs
+
+* Parallelize the implementation
+* Custom activation functions (with lambdas)
+* Support for specifying the number of neurons for each layer
+
+== Coffeescript
+
+=== Test with the XOR function
+
+Run `cd coffeescript` and `coffee test.coffee`
+
+Example output:
+
+```
+Testing the XOR function:
+MSE: 1.814996379590531e-30917
+1,1: 1.9984014443252818e-15
+0,1: 0.9999999999999989
+1,0: 0.9999999999999989
+0,0: 0
+```
+
+=== API
+
+```coffeescript
+    mlp = new MLP(nInputs, nOutputs, nHiddenLayers, nHiddenNeurons, learningRate)
+    mse = mlp.train([0,0], [0])
+    out = mlp.recall([0,0])
+```

@@ -1,4 +1,4 @@
-NeuralNetwork = require '.'
+MLP = require '.'
 
 inputs = [
     [1, 1]
@@ -14,13 +14,14 @@ outputs = [
     [0]
 ]
 
-N_EPOCHS = 20000
+N_EPOCHS = 10000
 LEARNING_RATE = 0.1
 N_HIDDEN_LAYERS = 1
 N_HIDDEN_NEURONS = 2
 
-nn = new NeuralNetwork(inputs[0].length, outputs[0].length, N_HIDDEN_LAYERS, N_HIDDEN_NEURONS, LEARNING_RATE)
+nn = new MLP(inputs[0].length, outputs[0].length, N_HIDDEN_LAYERS, N_HIDDEN_NEURONS, LEARNING_RATE)
 
+console.log "Testing the XOR function:"
 for i in [0...N_EPOCHS]
     mse = 0
     for sample, j in inputs

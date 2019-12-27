@@ -1,7 +1,10 @@
-all: main
+all: cli test
 
-main: main.cc neural-network.hh
-	g++ -std=c++11 -g -Ofast -march=native main.cc -o main
+cli: cli.cc mlp.hh
+	g++ -std=c++11 -g -Ofast -march=native cli.cc -o cli
+
+test: test.cc mlp.hh
+	g++ -std=c++11 -g -Ofast -march=native test.cc -o test
 
 clean:
 	rm -rf main
