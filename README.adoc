@@ -25,7 +25,7 @@ Run `./test`, it will output the predictions for the XOR truth table:
 
 Run `./cli`
 
-Example:
+*Example:*
 
 ```
 # of inputs> 2
@@ -114,7 +114,7 @@ It does also implement the `<<` and `>>` operators for streams to dump and impor
 
 Run `cd coffeescript` and `coffee test.coffee`
 
-Example output:
+*Example output:*
 
 ```
 Testing the XOR function:
