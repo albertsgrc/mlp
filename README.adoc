@@ -6,6 +6,8 @@ A multilayer perceptron implementation in C++ and Coffeescript
 
 === Build
 
+The `g++` executable must be available in your system path, and must support the c++11 standard.
+
 Run `cd c++` and use `make` to compile the test and cli programs.
 
 === Test with the XOR function
